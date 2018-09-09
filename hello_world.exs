@@ -1,5 +1,1 @@
-defmodule M do
-  def hello do
-    IO.puts "Hello World"
-  end
-end
+IO.puts "hello world"
