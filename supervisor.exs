@@ -1,3 +1,4 @@
+# https://medium.com/learn-elixir/supervisors-and-workers-in-10-minutes-83fbad6f16d1
 defmodule Parent do
   use Supervisor
 
@@ -7,6 +8,8 @@ defmodule Parent do
 
   def init(limits) do
     children = Enum.map(limits, fn(limit_num) ->
+      # when worker is called, no code is run and no pid is known
+      # only when supervisor is run do children get spawned
       worker(Child, [limit_num], [id: limit_num, restart: :permanent])
     end)
 
@@ -17,6 +20,7 @@ end
 defmodule Child do
   def start_link(limit) do
     pid = spawn_link(__MODULE__, :init, [limit])
+    # returns the pid
     {:ok, pid}
   end
 
@@ -34,6 +38,6 @@ defmodule Child do
 end
 
 
-Parent.start_link([2,3,5])
+Parent.start_link([5])
 
 Process.sleep 10_000
