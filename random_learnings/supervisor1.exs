@@ -1,4 +1,4 @@
-
+# https://medium.com/@tylerpachal/let-it-crash-creating-an-example-supervisor-in-elixir-using-otp-36ea4236b02b
 ## Create a new Parser process
 # iex(2)> {:ok, pid} = Parser.start_link()
 # {:ok, #PID<0.118.0>}
