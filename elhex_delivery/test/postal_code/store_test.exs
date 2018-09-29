@@ -5,7 +5,6 @@ defmodule ElhexDelivery.PostalCode.StoreTest do
   doctest ElhexDelivery
 
   test "get_geo_location" do
-    Store.start_link
     {latitude, longitude} = Store.get_geolocation("94062")
     assert is_float(latitude)
     assert is_float(longitude)
